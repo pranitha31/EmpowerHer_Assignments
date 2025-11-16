@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Menu</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf6f0;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #5c4033;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #3e2723;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: #795548;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Responsive Media Queries */
+    @media (max-width: 1024px) {
+      .menu {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .menu {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Coffee Menu</h1>
+  <div class="menu">
+    <div class="card">
+      <h2>Cappuccino</h2>
+      <h3>$49</h3>
+      <p>Usage of the Internet is becoming more common due to rapid advance.</p>
+    </div>
+    <div class="card">
+      <h2>Americano</h2>
+      <h3>$49</h3>
+      <p>Usage of the Internet is becoming more common due to rapid advance.</p>
+    </div>
+    <div class="card">
+      <h2>Espresso</h2>
+      <h3>$49</h3>
+      <p>Usage of the Internet is becoming more common due to rapid advance.</p>
+    </div>
+    <div class="card">
+      <h2>Macchiato</h2>
+      <h3>$49</h3>
+      <p>Usage of the Internet is becoming more common due to rapid advance.</p>
+    </div>
+    <div class="card">
+      <h2>Mocha</h2>
+      <h3>$49</h3>
+      <p>Usage of the Internet is becoming more common due to rapid advance.</p>
+    </div>
+    <div class="card">
+      <h2>Coffee Latte</h2>
+      <h3>$49</h3>
+      <p>Usage of the Internet is becoming more common due to rapid advance.</p>
+    </div>
+    <div class="card">
+      <h2>Piccolo Latte</h2>
+      <h3>$49</h3>
+      <p>Usage of the Internet is becoming more common due to rapid advance.</p>
+    </div>
+    <div class="card">
+      <h2>Ristretto</h2>
+      <h3>$49</h3>
+      <p>Usage of the Internet is becoming more common due to rapid advance.</p>
+    </div>
+    <div class="card">
+      <h2>Affogato</h2>
+      <h3>$49</h3>
+      <p>Usage of the Internet is becoming more common due to rapid advance.</p>
+    </div>
+  </div>
+</body>
+</html>
