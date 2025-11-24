@@ -1,23 +1,21 @@
-// ✅ Scoping & Optional Chaining Assignment — Single JS File
 
-// ----------------------------------------
 // a) Output & Explanation — let / var / block scope
-// ----------------------------------------
+
 if (true) {
-  let x = 10; // block-scoped — exists only inside {}
-  var y = 20; // function/global-scoped — accessible outside block
+  let x = 10; 
+  var y = 20; 
 }
 
-console.log(y); // ✅ 20 — because var is NOT block-scoped
-console.log(x); // ❌ ReferenceError — x is not defined outside the block
+console.log(y); 
+console.log(x); 
 
-// ✅ Explanation:
+// Explanation:
 // 'let' is block-scoped, so x only exists inside the if block.
 // 'var' is function-scoped or globally scoped, so y is available outside the block.
 
-// ----------------------------------------
+
 // b) Optional Chaining — safe property access
-// ----------------------------------------
+
 const profile = {
   user: {
     details: {
@@ -26,23 +24,17 @@ const profile = {
   },
 };
 
-console.log(profile.user.details.email); // ✅ "test@mail.com"
-console.log(profile.user.details.phone?.number); // ✅ undefined — no error
+console.log(profile.user.details.email); 
+console.log(profile.user.details.phone?.number); 
 
-// Without optional chaining, accessing phone.number would throw an error.
-
-// ----------------------------------------
 // c) Example where optional chaining prevents runtime error
-// ----------------------------------------
+
 const data = {
   product: {
     name: "Laptop",
   },
 };
 
-// Trying to access missing nested properties
-console.log(data.product.specs?.ram); // ✅ undefined — safe
 
-// Without optional chaining, this would throw:
-// console.log(data.product.specs.ram); // ❌ TypeError
+console.log(data.product.specs?.ram);
 

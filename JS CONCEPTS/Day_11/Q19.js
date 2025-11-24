@@ -1,6 +1,4 @@
-// ✅ JavaScript Assignment — ALL Solutions in One File
 
-// ----------------------------------------
 // 1. Template Literals + Expressions
 // ----------------------------------------
 console.log(`5 + 7 = ${5 + 7}`); // a
@@ -35,9 +33,9 @@ const obj2 = {
 };
 obj2.test();
 
-// ----------------------------------------
+
 // 3. Rest, Spread & Copying Objects
-// ----------------------------------------
+
 const product = { name: "Pen", price: 10 };
 const copyProduct = { ...product }; // a
 console.log(copyProduct);
@@ -64,7 +62,7 @@ const { brand } = laptop; // b
 console.log(brand);
 
 const info = {}; // c
-console.log(info.details?.name); // ✅ undefined safely
+console.log(info.details?.name);
 
 // ----------------------------------------
 // 5. Scoping (let/var/const)
@@ -75,11 +73,8 @@ console.log(i); // a => 3 (var is function-scoped)
 for (let j = 0; j < 3; j++) {}
 // console.log(j); // b => ReferenceError (let is block-scoped)
 
-// c — const prevents reassignment, ensures value safety
-
-// ----------------------------------------
 // 6. Ternary Operator – Practice
-// ----------------------------------------
+
 let speed;
 speed = kmph > 60 ? "Fast" : "Normal"; // a
 
@@ -127,7 +122,6 @@ const person = {
 };
 person.greet(); // c
 
-// ----------------------------------------
 // 9. Template Literals (More Practice)
 // ----------------------------------------
 console.log(`Today's Date: ${new Date().toDateString()}`); // a
@@ -136,7 +130,7 @@ const NAME = "John";
 const SCORE = 85;
 console.log(`Hello ${NAME}, your score is ${SCORE}/100`); // b
 
-// ----------------------------------------
+
 // 10. Arrow Function Shorthands
 // ----------------------------------------
 const add = (x, y) => x + y; // a
@@ -148,7 +142,6 @@ console.log(isAdult(20));
 const double = (n) => n * 2; // c
 console.log(double(9));
 
-// ----------------------------------------
 // 11. Spread Operator (Arrays & Objects)
 // ----------------------------------------
 const arr1 = [10, 20, 30];
@@ -163,7 +156,6 @@ const objB = { price: 25000, brand: "HP" };
 const finalObj = { ...objA, ...objB }; // c
 console.log(finalObj);
 
-// ----------------------------------------
 // 12. Optional Chaining (More Practice)
 // ----------------------------------------
 const userX = {
