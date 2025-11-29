@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Book Management</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f3;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .top-nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .top-nav button {
+            padding: 10px 20px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .top-nav button:hover {
+            background: #0056b3;
+        }
+
+        .form-container {
+            background: white;
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .form-container input,
+        .form-container select,
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .form-container button {
+            background: #28a745;
+            color: white;
+            border: none;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background: #1e7e34;
+        }
+
+        .controls {
+            width: 60%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .controls button,
+        .controls select {
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .grid {
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            margin-top: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background: #c82333;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <h1>📚 Book Management - Admin Page</h1>
+
+    <div class="top-nav">
+        <button onclick="window.location.href='index.html'">⬅ Go to Home</button>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-container">
+        <h2>Add New Book</h2>
+
+        <input type="text" id="title" placeholder="Enter Book Title">
+        <input type="text" id="author" placeholder="Enter Author Name">
+
+        <select id="category">
+            <option value="">Select Category</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Technical">Technical</option>
+        </select>
+
+        <button onclick="addBook()">Add Book</button>
+    </div>
+
+    <!-- Sort + Filter Controls -->
+    <div class="controls">
+        <button onclick="sortBooks()">Sort by Title</button>
+
+        <select id="filter" onchange="filterBooks()">
+            <option value="All">All</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Technical">Technical</option>
+        </select>
+    </div>
+
+    <!-- Display Grid -->
+    <div class="grid" id="bookGrid"></div>
+
+</body>
+
+<script>
+    let books = [];
+    let sortAsc = true;
+
+    const imageUrl = "https://m.media-amazon.com/images/I/71ZB18P3inL._SY522_.jpg";
+
+    function addBook() {
+        let title = document.getElementById("title").value.trim();
+        let author = document.getElementById("author").value.trim();
+        let category = document.getElementById("category").value;
+
+        if (!title || !author || !category) {
+            alert("Please fill all fields!");
+            return;
+        }
+
+        let book = {
+            title,
+            author,
+            category,
+            imageUrl
+        };
+
+        books.push(book);
+
+        document.getElementById("title").value = "";
+        document.getElementById("author").value = "";
+        document.getElementById("category").value = "";
+
+        renderBooks(books);
+    }
+
+    function renderBooks(list) {
+        let grid = document.getElementById("bookGrid");
+        grid.innerHTML = "";
+
+        list.forEach((book, index) => {
+            let card = document.createElement("div");
+            card.className = "card";
+
+            card.innerHTML = `
+                <img src="${book.imageUrl}">
+                <h3>${book.title}</h3>
+                <p><b>Author:</b> ${book.author}</p>
+                <p><b>Category:</b> ${book.category}</p>
+                <button class="delete-btn" onclick="deleteBook(${index})">Delete</button>
+            `;
+
+            grid.appendChild(card);
+        });
+    }
+
+    function deleteBook(index) {
+        books.splice(index, 1);
+        renderBooks(books);
+    }
+
+    function sortBooks() {
+        books.sort((a, b) => {
+            if (sortAsc) return a.title.localeCompare(b.title);
+            else return b.title.localeCompare(a.title);
+        });
+
+        sortAsc = !sortAsc;
+        renderBooks(books);
+    }
+
+    function filterBooks() {
+        let selected = document.getElementById("filter").value;
+
+        if (selected === "All") {
+            renderBooks(books);
+        } else {
+            let filtered = books.filter(b => b.category === selected);
+            renderBooks(filtered);
+        }
+    }
+</script>
+
+</html>
