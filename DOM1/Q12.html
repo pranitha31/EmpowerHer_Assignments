@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic DOM Manipulation</title>
+  <style>
+    .odd {
+      font-weight: bold;
+      color: blue;
+    }
+    .even {
+      font-style: italic;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h2>Dynamic List Example</h2>
+  
+  <!-- Initial list -->
+  <ul id="myList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+  
+  <!-- Button -->
+  <button id="addBtn">Add Item</button>
+ 
+</body>
+<script>
+  // Select the <ul> using querySelector
+const list = document.querySelector("#myList");
+const addBtn = document.querySelector("#addBtn");
+
+// Function to add new item
+function addItem() {
+  // Count current items
+  const itemCount = list.children.length + 1;
+
+  // Create new <li>
+  const newLi = document.createElement("li");
+  newLi.textContent = "New Item";
+
+  // Apply styles based on sequence number
+  if (itemCount % 2 === 1) {
+    newLi.classList.add("odd");   // Odd → bold & blue
+  } else {
+    newLi.classList.add("even");  // Even → italic & red
+  }
+
+  // Append to list
+  list.appendChild(newLi);
+}
+
+// Event listener for button
+addBtn.addEventListener("click", addItem);
+
+</script>
+</html>
